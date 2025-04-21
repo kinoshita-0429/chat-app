@@ -24,13 +24,17 @@
     <div class="chat-message">こんばんわ</div>
   </div>
 </div>
-<div class="chat-footer">
+<%= form_with model: [@room, @message], html: {class: "form"}, local: true do |f|%>
+<%# <div class="chat-footer"> %>
   <div class="message-form">
-    <input type="text" placeholder="type a message" class="message-text">
+    <%= f.text_field :content, class: 'message-text', placeholder: 'type a message' %>
+    <%# <input type="text" placeholder="type a message" class="message-text"> %>
     <label class="form-image">
       <span class="image-file">画像</span>
-      <input type="file" class="hidden">
+      <%= f.file_field :image, class: 'hidden' %>
+      <%# <input type="file" class="hidden"> %>
     </label>
   </div>
-  <input type="submit" value="送信" class="send">
-</div>
+  <%# <input type="submit" value="送信" class="send"> %>
+  <%= f.submit '送信', class: 'send' %>
+<% end %>
